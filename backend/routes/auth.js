@@ -18,7 +18,7 @@ router.post('/Sign-up',[
     body('name').isLength({min:3}),
     body('clgid').isLength({min:3}),
     body('email').isEmail(),
-    body('password').isLength({min:6}),
+    body('password').isLength({min:5}),
     body('rollno').isLength(4)
 ],async(req,res)=>{
     console.log("sign up");
@@ -41,7 +41,8 @@ router.post('/Sign-up',[
         email: req.body.email,
         password : secPass,
         clgid : req.body.clgid,
-        rollno : req.body.rollno
+        rollno : req.body.rollno,
+        position : req.body.position
     });
 
     const data={
@@ -49,7 +50,8 @@ router.post('/Sign-up',[
             id : user.id,
             email : user.email,
             name : user.name,
-            clgid : user.clgid
+            clgid : user.clgid,
+            position : user.position
         }
     }
 
@@ -96,7 +98,8 @@ router.post('/login',[
                 id : user.id,
                 email : user.email,
                 name : user.name,
-                clgid : user.clgid
+                clgid : user.clgid,
+                position : user.position
             }
         }
 
@@ -135,7 +138,7 @@ router.post('/Create-admin',[
     body('Admin_id').isLength({min:3}),
     body('email').isEmail(),
     body('password').isLength({min:6}),
-    body('designation').isLength(2)
+    body('position').isLength(2)
 ],async(req,res)=>{
     console.log("Create admin");
 
@@ -157,7 +160,7 @@ router.post('/Create-admin',[
         name: req.body.name,
         email: req.body.email,
         password : secPass,
-        designation : req.body.designation,
+        position : req.body.position,
     });
 
     const data={
@@ -166,7 +169,7 @@ router.post('/Create-admin',[
             Admin_id : admin.Admin_id,
             email : admin.email,
             name : admin.name,
-            designation : admin.designation
+            position : admin.position
         }
     }
 
@@ -213,7 +216,7 @@ router.post('/admin-login',[
                 Admin_id : admin.Admin_id,
                 email : admin.email,
                 name : admin.name,
-                designation : admin.designation
+                position : admin.position
             }
         }
 

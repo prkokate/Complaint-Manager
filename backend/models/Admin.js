@@ -20,7 +20,7 @@ let AdminSchema = new Schema({
         type : String,
         required : true
     },
-    designation :{
+    position :{
         type : String,
         required : true
     },
